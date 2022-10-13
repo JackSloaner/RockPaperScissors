@@ -77,3 +77,5 @@ function rpsRound(){
     }
     return result;
 }
+
+rps();
