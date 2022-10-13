@@ -1,3 +1,28 @@
+function rps() {
+    alert('Welcome to Rock Paper Scissors');
+    let keepGoing = true;
+    let comp = 0;
+    let you = 0;
+    while(keepGoing){
+        let x = rpsRound();
+        switch(x){
+            case 'win!':
+            you++
+                break;
+            case 'lose!':
+            comp++
+        }
+        console.log(`score: You:${you}; Computer:${comp}`);
+        if (comp == 5){
+            keepGoing = false;
+            console.log('You lose the best to 5!');
+        } else if (you == 5){
+            keepGoing = false;
+            console.log('You win the best to 5!');
+        }
+    }
+}
+
 function getComputerChoice() {
     const randNum = Math.floor(Math.random() * 3);
     let choice = '';
