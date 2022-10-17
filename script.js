@@ -2,6 +2,8 @@ const rock = document.getElementById('Rock');
 const paper = document.getElementById('Paper');
 const scissors = document.getElementById('Scissors');
 
+const resultDiv = document.getElementById('Result');
+
 rock.addEventListener('click', rpsRound);
 paper.addEventListener('click', rpsRound);
 scissors.addEventListener('click', rpsRound);
@@ -35,7 +37,7 @@ function rpsRound(e){
         } else if (compChoice === 'Scissors'){
             result = 'win!';
         }
-        console.log(`${compChoice}! You ${result}`)
+        resultDiv.textContent = `${compChoice}! You ${result}`
     } else if (userChoice.toUpperCase() === 'P') {
         if (compChoice === 'Rock') {
             result = 'win!';
@@ -44,7 +46,7 @@ function rpsRound(e){
         } else if (compChoice === 'Scissors'){
             result = 'lose!';
         }
-        console.log(`${compChoice}! You ${result}`)
+        resultDiv.textContent = `${compChoice}! You ${result}`
         
     } else if (userChoice.toUpperCase() === 'S'){
         if (compChoice === 'Rock') {
@@ -54,11 +56,8 @@ function rpsRound(e){
         } else if (compChoice === 'Scissors'){
             result = 'tie!';
         }
-        console.log(`${compChoice}! You ${result}`)
-    } else {
-        alert('please choose either "R", "P", or "S"');
-        rpsRound();
-    }
+        resultDiv.textContent = `${compChoice}! You ${result}`
+    } 
     return result;
 }
 
