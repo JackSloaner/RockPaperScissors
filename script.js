@@ -83,10 +83,47 @@ function checkGameOver(){
     if (userScore === 5){
         userScore = 0;
         computerScore = 0;
-        alert('You Lost!');
+        resultMessage(true);
     } else if (computerScore === 5){
         userScore = 0
         computerScore = 0;
-        alert('You Lost!')
+        resultMessage(false);
     }
+}
+
+function resultMessage(win){
+    const resultBox = document.createElement('div');
+
+    resultBox.classList.add('resultBox')
+    let result;
+
+    if (win){
+        resultBox.classList.add('win');
+        result = 'won';
+    } else{
+        resultBox.classList.add('lose');
+        result = 'lost';
+    }
+    removeAll();
+    resultBox.textContent = `You ${result} the best of 5!`;
+    const body = document.querySelector('body')
+    body.appendChild(resultBox);
+    setTimeout(putBack, 3000);
+    scoreDiv.textContent = `You: ${userScore} | Computer: ${computerScore}`;
+}
+
+function removeAll(){
+    const elements = Array.from(document.getElementsByClassName('disappear'))
+    elements.forEach(element => {
+        element.style.display = 'none';
+    });
+}
+
+function putBack(){
+    resultBox = document.querySelector('.resultBox');
+    resultBox.remove();
+    const elements = Array.from(document.getElementsByClassName('disappear'))
+    elements.forEach(element => {
+        element.style.removeProperty('display')
+    });
 }
