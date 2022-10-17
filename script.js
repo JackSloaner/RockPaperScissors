@@ -1,3 +1,12 @@
+const rock = document.getElementById('Rock');
+const paper = document.getElementById('Paper');
+const scissors = document.getElementById('Scissors');
+
+rock.addEventListener('click', rpsRound);
+paper.addEventListener('click', rpsRound);
+scissors.addEventListener('click', rpsRound);
+
+
 function getComputerChoice() {
     const randNum = Math.floor(Math.random() * 3);
     let choice = '';
@@ -14,9 +23,9 @@ function getComputerChoice() {
     return choice;
 }
 
-function rpsRound(){
+function rpsRound(e){
     const compChoice = getComputerChoice();
-    const userChoice = prompt('R, P, or S');
+    const userChoice = findUserChoice(e);
     let result;
     if (userChoice.toUpperCase() === 'R') {
         if (compChoice === 'Rock') {
@@ -51,4 +60,14 @@ function rpsRound(){
         rpsRound();
     }
     return result;
+}
+
+function findUserChoice(e){
+    if (e.target.id === 'Rock'){
+        return 'R';
+    } else if (e.target.id === 'Paper'){
+        return 'P';
+    } else {
+        return 'S';
+    }
 }
