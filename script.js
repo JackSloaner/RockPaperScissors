@@ -42,8 +42,6 @@ function rpsRound(e){
             result = 'win!';
             userScore++;
         }
-        resultDiv.textContent = `${compChoice}! You ${result}`;
-        scoreDiv.textContent = `You: ${userScore} | Computer: ${computerScore}`;
     } else if (userChoice.toUpperCase() === 'P') {
         if (compChoice === 'Rock') {
             result = 'win!';
@@ -54,8 +52,6 @@ function rpsRound(e){
             result = 'lose!';
             computerScore++;
         }
-        resultDiv.textContent = `${compChoice}! You ${result}`
-        scoreDiv.textContent = `You: ${userScore} | Computer: ${computerScore}`;
     } else if (userChoice.toUpperCase() === 'S'){
         if (compChoice === 'Rock') {
             result = 'lose!';
@@ -66,9 +62,10 @@ function rpsRound(e){
         } else if (compChoice === 'Scissors'){
             result = 'tie!';
         }
-        resultDiv.textContent = `${compChoice}! You ${result}`
-        scoreDiv.textContent = `You: ${userScore} | Computer: ${computerScore}`;
     } 
+    resultDiv.textContent = `${compChoice}! You ${result}`;
+    scoreDiv.textContent = `You: ${userScore} | Computer: ${computerScore}`;
+    checkGameOver();
     return result;
 }
 
@@ -82,3 +79,14 @@ function findUserChoice(e){
     }
 }
 
+function checkGameOver(){
+    if (userScore === 5){
+        userScore = 0;
+        computerScore = 0;
+        alert('You Lost!');
+    } else if (computerScore === 5){
+        userScore = 0
+        computerScore = 0;
+        alert('You Lost!')
+    }
+}
